@@ -26,7 +26,7 @@ while True:
     elif present[-1] == 'c':
         prog = present + 'king'
 
-*長母音+子音 -> ing
+#長母音+子音 -> ing
     elif (present[-3] == 'a' or \
           present[-3] == 'i' or \
           present[-3] == 'u' or \
@@ -39,7 +39,7 @@ while True:
          present[-2] == 'o'):
         prog = present + 'ing'
 
-*母音+子音
+#母音+子音
     elif present[-2] == 'a' or \
          present[-2] == 'i' or \
          present[-2] == 'u' or \
@@ -47,17 +47,17 @@ while True:
          present[-2] == 'o':
         prog = present + present[-1] + 'ing'
 
-*終了
+#終了
     elif present == 'end':
         break
 
-*その他
+#その他
     else:
         prog = present + 'ing'
 
     print('現在分詞はコレ->' + prog)
 
-*例外 (6つのみ)
+#例外 (6つのみ)
     past = ''
     if present == 'visit' or \
        present == 'limit' or \
@@ -69,7 +69,7 @@ while True:
     elif present == 'dye':
         past = present + 'd'
 
-*不規則動詞 (6つのみ)
+#不規則動詞 (6つのみ)
     elif present == 'get':
         past = 'got-got'
     elif present == 'run':
@@ -82,7 +82,7 @@ while True:
     elif present[-1] == 'e':
         past = present + 'd'
 
-*末尾から２文字目が母音であるか判断
+#末尾から２文字目が母音であるか判断
     elif present[-1:] == 'p':
         if present[-2] == 'a' or \
            present[-2] == 'i' or \
@@ -93,7 +93,7 @@ while True:
         else:
             past = present + 'ed'
 
-*上記同様
+#上記同様
     elif present[-1:] == 'y':
         if present[-2] == 'a' or \
            present[-2] == 'i' or \
@@ -119,7 +119,7 @@ while True:
          present[-2] == 'o':
         past = present + present[-1] + 'ed'
 
-*その他
+#その他
     else:
         past = present + 'ed'
     print('過去形はコレ ->' + past)
