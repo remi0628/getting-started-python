@@ -88,8 +88,7 @@ def main():
         else:
             past = present + 'ed'
         print('過去形はコレ ->' + past)
-        print('''
-                    ''')
+        print('\n')
 
 def in_list(search, arr):
     for item in arr:
