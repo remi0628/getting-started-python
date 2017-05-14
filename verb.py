@@ -11,7 +11,7 @@ def main():
             break
         prog = ''
     
-        if in_list(present, ['visit','limit','play','enjoy','listen','see','dye','enter']):
+        if present in ['visit','limit','play','enjoy','listen','see','dye','enter']:
             prog = present + 'ing'
     
         elif present[-2:] == 'ie':
@@ -24,11 +24,11 @@ def main():
             prog = present + 'king'
     
     #長母音+子音 -> ing
-        elif in_list(present[-3],vowels) and in_list(present[-2],vowels):
+        elif (present[-3] in vowels) and (present[-2] in vowels):
             prog = present + 'ing'
     
     #母音+子音
-        elif in_list(present[-2],vowels):
+        elif present[-2] in vowels:
             prog = present + present[-1] + 'ing'
     
     #終了
@@ -43,7 +43,7 @@ def main():
     
     #例外 (6つのみ)
         past = ''
-        if in_list(present, ['visit', 'limit', 'play', 'enjoy', 'listen', 'enter']):
+        if present in ['visit', 'limit', 'play', 'enjoy', 'listen', 'enter']:
             past = present + 'ed'
         elif present == 'dye':
             past = present + 'd'
@@ -63,14 +63,14 @@ def main():
     
     #末尾から２文字目が母音であるか判断
         elif present[-1:] == 'p':
-            if in_list(present[-2], vowels):
+            if present[-2] in vowels:
                 past = present + 'ped'
             else:
                 past = present + 'ed'
     
     #上記同様
         elif present[-1:] == 'y':
-            if in_list(present[-2], vowels):
+            if present[-2] in  vowels:
                 past = present + 'ed'
             else:
                 past = present.replace(present[-1], 'ied')
@@ -78,10 +78,10 @@ def main():
         elif present[-1] == 'c':
             past = present + 'ked'
     
-        elif in_list(present[-2:], ['ir','er','ur']):
+        elif present[-2:] in  ['ir','er','ur']:
             past = present + present[-1] + 'ed'
     
-        elif in_list(present[-2], vowels):
+        elif present[-2] in vowels:
             past = present + present[-1] + 'ed'
     
     #その他
@@ -89,12 +89,6 @@ def main():
             past = present + 'ed'
         print('過去形はコレ ->' + past)
         print('\n')
-
-def in_list(search, arr):
-    for item in arr:
-        if item == search:
-            return True
-    return False
 
 if __name__ == "__main__":
     main()       
