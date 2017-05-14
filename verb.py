@@ -2,6 +2,7 @@
 import time
 
 def main():
+    vowels = ['a','i','u','e','o']
     while True:
         time.sleep(1)
         present = input('動詞を入力してネ>')
@@ -10,14 +11,7 @@ def main():
             break
         prog = ''
     
-        if present == 'visit' or \
-           present == 'limit' or \
-           present == 'play' or \
-           present == 'enjoy' or \
-           present == 'listen' or \
-           present == 'see' or \
-           present == 'dye' or \
-           present == 'enter':
+        if in_list(present, ['visit','limit','play','enjoy','listen','see','dye','enter']):
             prog = present + 'ing'
     
         elif present[-2:] == 'ie':
@@ -30,24 +24,11 @@ def main():
             prog = present + 'king'
     
     #長母音+子音 -> ing
-        elif (present[-3] == 'a' or \
-              present[-3] == 'i' or \
-              present[-3] == 'u' or \
-              present[-3] == 'e' or \
-              present[-3] == 'o') and\
-            (present[-2] == 'a' or \
-             present[-2] == 'i' or \
-             present[-2] == 'u' or \
-             present[-2] == 'e' or \
-             present[-2] == 'o'):
+        elif in_list(present[-3],vowels) and in_list(present[-2],vowels):
             prog = present + 'ing'
     
     #母音+子音
-        elif present[-2] == 'a' or \
-             present[-2] == 'i' or \
-             present[-2] == 'u' or \
-             present[-2] == 'e' or \
-             present[-2] == 'o':
+        elif in_list(present[-2],vowels):
             prog = present + present[-1] + 'ing'
     
     #終了
@@ -62,12 +43,7 @@ def main():
     
     #例外 (6つのみ)
         past = ''
-        if present == 'visit' or \
-           present == 'limit' or \
-           present == 'play' or \
-           present == 'enjoy' or \
-           present == 'listen' or \
-           present == 'enter':
+        if in_list(present, ['visit', 'limit', 'play', 'enjoy', 'listen', 'enter']):
             past = present + 'ed'
         elif present == 'dye':
             past = present + 'd'
@@ -87,22 +63,14 @@ def main():
     
     #末尾から２文字目が母音であるか判断
         elif present[-1:] == 'p':
-            if present[-2] == 'a' or \
-               present[-2] == 'i' or \
-               present[-2] == 'u' or \
-               present[-2] == 'e' or \
-               present[-2] == 'o':
+            if in_list(present[-2], vowels):
                 past = present + 'ped'
             else:
                 past = present + 'ed'
     
     #上記同様
         elif present[-1:] == 'y':
-            if present[-2] == 'a' or \
-               present[-2] == 'i' or \
-               present[-2] == 'u' or \
-               present[-2] == 'e' or \
-               present[-2] == 'o':
+            if in_list(present[-2], vowels):
                 past = present + 'ed'
             else:
                 past = present.replace(present[-1], 'ied')
@@ -110,25 +78,24 @@ def main():
         elif present[-1] == 'c':
             past = present + 'ked'
     
-        elif present[-2:] == 'ir' or \
-             present[-2:] == 'er' or \
-             present[-2:] == 'ur':
+        elif in_list(present[-2:], ['ir','er','ur']):
             past = present + present[-1] + 'ed'
     
-        elif present[-2] == 'a' or \
-             present[-2] == 'i' or \
-             present[-2] == 'u' or \
-             present[-2] == 'e' or \
-             present[-2] == 'o':
+        elif in_list(present[-2], vowels):
             past = present + present[-1] + 'ed'
     
     #その他
         else:
             past = present + 'ed'
         print('過去形はコレ ->' + past)
-    
         print('''
                     ''')
+
+def in_list(search, arr):
+    for item in arr:
+        if item == search:
+            return True
+    return False
 
 if __name__ == "__main__":
     main()       
